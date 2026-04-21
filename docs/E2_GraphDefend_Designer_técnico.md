@@ -151,13 +151,14 @@ O sistema consumirá dados no formato JSON, sendo a estrutura composta por uma l
 ## 5. Backlog do Projeto
 
 ### 5.1 In-Scope — O que será implementado
-# | Funcionalidade | Prioridade | Critério de aceite |
-|---|----------------|------------|-------------------|
+| # | Funcionalidade | Prioridade | Critério de aceite |
+|---|----------------|------------|--------------------|
 | 1 | Importação de Dataset | Alta | **Dado** um arquivo JSON válido em `/data`, **quando** o usuário selecionar a importação, **então** o sistema deve carregar a estrutura e exibir a quantidade total de vértices e arestas na CLI. |
 | 2 | Cálculo de Árvore Geradora Mínima | Alta | **Dado** um grafo ponderado carregado, **quando** o usuário solicitar o algoritmo de Kruskal, **então** o sistema deve exibir o custo total do backbone e a lista textual das arestas mantidas. |
 | 3 | Identificação de Pontos de Articulação (SPOFs) | Alta | **Dado** um grafo de rede carregado na CLI, **quando** o usuário executar a análise de vulnerabilidade (Algoritmo de Tarjan), **então** o sistema deve listar nominalmente todos os vértices cuja remoção desconecta o grafo. |
 | 4 | Simulação de Falhas de Nós | Média | **Dado** um grafo carregado e um nó selecionado para remoção, **quando** a simulação for executada, **então** o sistema deve emitir um alerta indicando se a rede permaneceu conexa ou se foi fragmentada. |
 | 5 | Gerador de Grafos Aleatórios | Baixa | **Dado** os parâmetros de N vértices e densidade D, **quando** o usuário confirmar a geração, **então** o sistema deve salvar um arquivo JSON válido no diretório `/data` e exibir o caminho do arquivo gerado. |
+
 
 ### 5.2 Out-of-Scope — O que NÃO será feito
 
