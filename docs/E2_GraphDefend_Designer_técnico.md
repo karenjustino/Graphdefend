@@ -33,17 +33,9 @@
 Foi definido como o núcleo analítico do projeto para realizar a extração da MST. Para o contexto de segurança e infraestrutura (onde os dispositivos são vértices V e as conexões são arestas E), a MST é fundamental para projetar um backbone que garanta a conectividade total da operação ao menor custo (latência) possível. O uso do algoritmo elimina redundâncias não essenciais, minimizando a superfície de ataque a agentes maliciosos.
 
 **Alternativa descartada e motivo:**
-
-| Algoritmo alternativo| Motivo da exclusão                                |
-   Algoritmo de Prim   |As redes de computadores modeladas                 |
-                       | são caracteristicamente esparsas. O Kruskal,      |
-                       |alinhado ao uso obrigatório da estrutura de        |
-                       |Lista de Adjacência,                                |
-                       |apresenta eficiência superior no processamento de  |
-                       |arestas em grafos esparsos em comparação           |
-                       | a implementações de Prim                          |
-                       |baseadas em matrizes tradicionais.                 |
-|----------------------|---------------------------------------------------|
+| Algoritmo alternativo | Motivo da exclusão |
+|-----------------------|--------------------|
+| Algoritmo de Prim | As redes de computadores modeladas são caracteristicamente esparsas. O Kruskal, alinhado ao uso obrigatório da estrutura de Lista de Adjacência, apresenta eficiência superior no processamento de arestas em grafos esparsos em comparação a implementações de Prim baseadas em matrizes tradicionais. |
 
 **Limitações no contexto do problema:**
 Ao processar topologias com simulações de larga escala (limite estabelecido de até 10.000 nós), a complexidade de tempo impõe restrições de usabilidade, podendo dar a impressão de travamento do sistema. É obrigatório mitigar isso fornecendo feedback visual (barras de progresso/logs) via CLI durante a execução.
