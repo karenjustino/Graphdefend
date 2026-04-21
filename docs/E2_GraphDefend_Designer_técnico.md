@@ -68,7 +68,6 @@ Este algoritmo soluciona o problema central de diagnóstico de vulnerabilidades 
 
 ![Diagrama de Arquitetura do GraphDefend](./GraphDefend_Arquiteturaemcamadas.png)
 
-![Diagrama de arquitetura](./docs/arquitetura_e2.png)
 
 ### Descrição das camadas
 | Camada | Responsabilidade | Artefatos principais |
