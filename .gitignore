@@ -1,0 +1,15 @@
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.pytest_cache/
+
+.streamlit/
+
+dashboard_rede.html
+dashboard_cli.html
+grafo_temp.html
+
+.DS_Store
+Thumbs.db
