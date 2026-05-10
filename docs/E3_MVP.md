@@ -108,7 +108,29 @@ if self.parent[u] is not None and self.lowest_reachable_time[v] >= self.discover
 > Confirme que a estrutura implementada está de acordo com o E2.
 
 ```
-
+```text
+GraphDefend/
+├── docs/
+│   ├── E1A_Aliana_Karem_GabrielAnsatacio.md
+│   ├── E2_GraphDefend_Designer_técnico.md
+│   └── E3_Template.md
+├── src/
+│   ├── core/
+│   │   └── graph.py
+│   ├── algorithms/
+│   │   ├── kruskal.py      
+│   │   └── tarjan.py 
+│   ├── ui/
+│   │   ├── app.py
+│   │   └── visualizer.py
+│   └── io/
+│       └── file_reader.py
+├── tests/
+│   ├── test_algorithms.py
+│   └── test_graph.py
+├── data/
+│   └── topologia.json
+└── requirements.txt
 ```
 
 **Desvios em relação ao E2** *(se houver)*:
