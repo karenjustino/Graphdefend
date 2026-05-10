@@ -134,7 +134,7 @@ GraphDefend/
 ```
 
 **Desvios em relação ao E2** *(se houver)*:
-Elevação de Escopo (Overdelivery): No E2, a interface prevista era exclusivamente via linha de comando (CLI). Para o MVP, desenvolvemos uma Interface Gráfica interativa utilizando Streamlit e Pyvis (pasta src/ui/) para permitir análises visuais de cada grafo
+#### Elevação de Escopo (Overdelivery): No E2, a interface prevista era exclusivamente via linha de comando (CLI). Para o MVP, desenvolvemos uma Interface Gráfica interativa utilizando Streamlit e Pyvis (pasta src/ui/) para permitir análises visuais de cada grafo
 ---
 
 ## 4. Telas do MVP
@@ -147,7 +147,7 @@ Elevação de Escopo (Overdelivery): No E2, a interface prevista era exclusivame
 
 *Descrição:*
 
-Descrição: Dashboard principal rodando via Streamlit. O painel lateral exibe os controles de visualização e métricas calculadas em tempo real (quantidade de vértices, arestas, custo total do backbone e total de vulnerabilidades). O painel central exibe o grafo interativo renderizado.
+#### Descrição: Dashboard principal rodando via Streamlit. O painel lateral exibe os controles de visualização e métricas calculadas em tempo real (quantidade de vértices, arestas, custo total do backbone e total de vulnerabilidades). O painel central exibe o grafo interativo renderizado.
 
 ### Tela de Resultado
 
@@ -158,7 +158,7 @@ Descrição: Quando o filtro é acionado, a física da rede se ajusta. Em vermel
 
 ![Tela de resultado](./assets/grafo-spofs.png)
 
-Descrição: Interface do sistema exibindo a análise de vulnerabilidades em tempo real. O painel lateral apresenta as métricas da topologia importada (9 vértices e 10 arestas) e indica a detecção de 4 Pontos Únicos de Falha (SPOFs). No painel central, a renderização interativa destaca em vermelho os nós críticos identificados pelo algoritmo de Tarjan (Core2, Dist1, Dist2 e Dist3). A visualização deixa claro que a queda de qualquer um desses nós fragmentaria a comunicação da rede, auxiliando na rápida tomada de decisão para mitigação de riscos. Os pesos nas conexões representam a latência em milissegundos.
+#### Descrição: Interface do sistema exibindo a análise de vulnerabilidades em tempo real. O painel lateral apresenta as métricas da topologia importada (9 vértices e 10 arestas) e indica a detecção de 4 Pontos Únicos de Falha (SPOFs). No painel central, a renderização interativa destaca em vermelho os nós críticos identificados pelo algoritmo de Tarjan (Core2, Dist1, Dist2 e Dist3). A visualização deixa claro que a queda de qualquer um desses nós fragmentaria a comunicação da rede, auxiliando na rápida tomada de decisão para mitigação de riscos. Os pesos nas conexões representam a latência em milissegundos.
 
 
 ---
