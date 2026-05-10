@@ -145,7 +145,7 @@ Ao executar o sistema, o GraphDefend irá:
 
 ## Exemplo de execução
 
-![Protótipo do GraphDefend](docs/imagem_prototipo.png)
+![Protótipo do GraphDefend](https://github.com/karenjustino/Graphdefend/blob/prototipo/docs/imagem_propotipo.png)
 
 ---
 
