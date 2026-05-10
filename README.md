@@ -1,4 +1,3 @@
-
 # GraphDefend
 
 ## Nosso projeto
