@@ -180,8 +180,6 @@ python -m pytest tests/
 **Resultado atual:**
 
 ```
-# Cole aqui a saída do pytest / JUnit
-```
 ============================= test session starts ==============================
 platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
 rootdir: C:\Users\Usuario\Documents\Graphdefend
@@ -193,6 +191,8 @@ tests\test_graph.py ..                                                   [100%]
 
 ============================== 4 passed in 0.04s ===============================
 ---
+```
+
 
 ## 6. Histórico de Commits
 
