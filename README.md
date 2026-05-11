@@ -21,13 +21,16 @@ O foco do projeto vai além da matemática: ele transforma abstrações em decis
 2. Instale as dependências e bibliotecas necessárias:
    ```bash
      pip install -r requirements.txt
+    ```
 ### Passo 2: Inicializando o Dashboard
 Inicie o servidor do Streamlit executando o comando abaixo no terminal (na raiz do projeto):
  
       streamlit run src/ui/app.py ou python -m streamlit run src/ui/app.py
 
-
-
+### Passo 3: Adicoine uma topologia de rede em formado JSON
+```bash
+utilize: graphdefend/data/topologia.json para isso.
+ ```
 ## Interface da Aplicação (MVP)
 
 ### 1. Visão Geral da Topologia Original
