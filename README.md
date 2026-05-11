@@ -4,7 +4,7 @@
 ## Nosso projeto
 O **GraphDefend** é um projeto acadêmico desenvolvido para aprofundar o estudo e a aplicação prática da Teoria dos Grafos. A ferramenta atua na análise de topologias de redes de computadores corporativas, identificando pontos críticos de vulnerabilidade e otimizando a conectividade. 
 
-O foco do projeto vai além da matemática: ele transforma abstrações em decisões acionáveis para mitigação de falhas, alinhando-se perfeitamente aos princípios de **Governança, Risco e Compliance (GRC)** aplicados à infraestrutura tecnológica.
+O foco do projeto vai além da matemática: ele transforma abstrações em decisões acionáveis para mitigação de falhas, alinhando-se aos princípios de **Governança, Risco e Compliance (GRC)** aplicados à infraestrutura de redes.
 
 ---
 
@@ -15,7 +15,7 @@ O foco do projeto vai além da matemática: ele transforma abstrações em decis
 ### Passo 1: Instalação e Configuração
 1. Clone o repositório para o seu ambiente local:
    ```bash
-   git clone https://github.com/karenjustino/Graphdefend
+   git clone https://github.com/karenjustino/Graphdefend.git
    cd Graphdefend
 
 2. Instale as dependências e bibliotecas necessárias:
@@ -24,13 +24,20 @@ O foco do projeto vai além da matemática: ele transforma abstrações em decis
     ```
 ### Passo 2: Inicializando o Dashboard
 Inicie o servidor do Streamlit executando o comando abaixo no terminal (na raiz do projeto):
- 
-      streamlit run src/ui/app.py ou python -m streamlit run src/ui/app.py
 
-### Passo 3: Adicoine uma topologia de rede em formado JSON
+   ```bash
+streamlit run src/ui/app.py
+```
+ou
+   ```bash
+python -m streamlit run src/ui/app.py
+```
+### Passo 3: Utilize uma topologia de rede em formato JSON
+O projeto já possui um arquivo de exemplo disponível em:
 ```bash
-utilize: graphdefend/data/topologia.json para isso.
+data/topologia.json
  ```
+
 ## Interface da Aplicação (MVP)
 
 ### 1. Visão Geral da Topologia Original

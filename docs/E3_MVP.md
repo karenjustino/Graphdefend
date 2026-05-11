@@ -39,7 +39,7 @@ pip install -r requirements.txt
 **Execução:**
 
 ```bash
- python -m streamlit run src/ui/app.py
+python -m streamlit run src/ui/app.py
 ```
 
 **Saída esperada:**
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 
 ```python
 
-Kruskal 
+# Kruskal 
 
 arestas.sort(key=lambda item: item[2])
 
@@ -81,7 +81,7 @@ for origem, destino, peso in arestas:
         mst_arestas.append((origem, destino, peso))
         custo_total += peso
 
-Tarjan 
+# Tarjan 
 
 for vertex in self.graph.get_vertices():
     self.parent[vertex] = None
@@ -107,7 +107,6 @@ if self.parent[u] is not None and self.lowest_reachable_time[v] >= self.discover
 
 > Confirme que a estrutura implementada está de acordo com o E2.
 
-```
 ```text
 GraphDefend/
 ├── docs/
@@ -163,34 +162,39 @@ GraphDefend/
 
 ## 5. Testes Unitários
 
-Algoritmo | Caso de teste | Status | Comando para executar |
+| Algoritmo | Caso de teste | Status | Comando para executar |
 |-----------|--------------|--------|----------------------|
 | Kruskal (MST) | Caso base (Custo total e arestas) | ✅ | `pytest tests/test_algorithms.py::test_kruskal_calcula_mst` |
+| Kruskal (MST) | Grafo desconexo | ✅ | `pytest tests/test_algorithms.py::test_kruskal_grafo_desconexo` |
 | Tarjan (SPOF) | Caso base (Vulnerabilidade no nó) | ✅ | `pytest tests/test_algorithms.py::test_tarjan_identifica_spof` |
+| Tarjan (SPOF) | Grafo sem SPOF | ✅ | `pytest tests/test_algorithms.py::test_tarjan_sem_spof` |
 | Graph (Core) | Grafo vazio | ✅ | `pytest tests/test_graph.py::test_grafo_vazio` |
-| Graph (Core) | Criação de nós e arestas (Completo) | ✅ | `pytest tests/test_graph.py::test_criacao_vertices_e_arestas` |
+| Graph (Core) | Criação de nós e arestas | ✅ | `pytest tests/test_graph.py::test_criacao_vertices_e_arestas` |
+
 **Como rodar todos os testes:**
 
 ```bash
 pytest tests/
+```
 ou
+```bash
 python -m pytest tests/
 ```
 
 **Resultado atual:**
 
-```
+```text
 ============================= test session starts ==============================
-platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+platform win32 -- Python 3.13.3, pytest-9.0.3, pluggy-1.6.0
 rootdir: C:\Users\Usuario\Documents\Graphdefend
+configfile: pytest.ini
 plugins: anyio-4.13.0
-collected 4 items
+collected 6 items
 
-tests\test_algorithms.py ..                                              [ 50%]
+tests\test_algorithms.py ....                                             [ 66%]
 tests\test_graph.py ..                                                   [100%]
 
-============================== 4 passed in 0.04s ===============================
----
+============================== 6 passed in 0.05s ===============================
 ```
 
 
@@ -217,9 +221,9 @@ tests\test_graph.py ..                                                   [100%]
 | Leitura de arquivo | ✅ Completo | Importação de topologias via JSON seguindo o esquema técnico definido. |
 | Tela de entrada | ✅ Completo | Dashboard em Streamlit com menus laterais e seleção de modos de visualização. |
 | Tela de resultado | ✅ Completo | Renderização dinâmica em HTML/Pyvis com física de partículas e legendas. |
-| Testes unitários | ✅ Completo | Cobertura de 100% para os casos de teste planeados (4/4 aprovados). |
+| Testes unitários | ✅ Completo | Todos os testes planejados para o MVP foram aprovados com sucesso (4/4). |
 | Simulação de falhas | 🔄 Parcial | A lógica de identificação de riscos está pronta, mas a remoção dinâmica de nós em tempo real está no backlog. |
-| Gerador de grafos | ⏳ Pendente | Funcionalidade para criação de topologias aleatórias de larga escala planeada como subir aquivos em  para a fase final. |
+| Gerador de grafos | ⏳ Pendente | Funcionalidade planejada para a fase final do projeto, permitindo geração e importação de topologias aleatórias de larga escala. |
 ---
 
 ---
