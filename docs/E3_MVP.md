@@ -110,25 +110,48 @@ if self.parent[u] is not None and self.lowest_reachable_time[v] >= self.discover
 ```text
 GraphDefend/
 ├── docs/
+│   ├── assets/
+│   │   ├── Grafo-mst.png
+│   │   ├── grafo-spofs.png
+│   │   └── Grafo_estado_original.png
+│   ├── corrigidos/
+│   │   ├── E1A_Aliana_Karem_GabrielAnsatacio.md
+│   │   └── Grupo 12 - E2A.md
 │   ├── E1A_Aliana_Karem_GabrielAnsatacio.md
 │   ├── E2_GraphDefend_Designer_técnico.md
-│   └── E3_Template.md
+│   ├── E3_MVP.md
+│   └── GraphDefend_Arquiteturaemcamadas.png
+├── lib/
+│   ├── bindings/
+│   │   └── utils.js
+│   ├── tom-select/
+│   │   ├── tom-select.complete.min.js
+│   │   └── tom-select.css
+│   └── vis-9.1.2/
+│       ├── vis-network.css
+│       └── vis-network.min.js
 ├── src/
+│   ├── algorithms/
+│   │   ├── kruskal.py
+│   │   └── tarjan.py
 │   ├── core/
 │   │   └── graph.py
-│   ├── algorithms/
-│   │   ├── kruskal.py      
-│   │   └── tarjan.py 
+│   ├── io/
+│   │   └── file_reader.py
 │   ├── ui/
+│   │   ├── __init__.py
 │   │   ├── app.py
 │   │   └── visualizer.py
-│   └── io/
-│       └── file_reader.py
+│   └── main.py
 ├── tests/
 │   ├── test_algorithms.py
 │   └── test_graph.py
 ├── data/
 │   └── topologia.json
+├── .gitignore
+├── LICENSE
+├── pytest.ini
+├── README.md
 └── requirements.txt
 ```
 
