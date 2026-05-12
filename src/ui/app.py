@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import os
 import sys
+import json
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
@@ -25,9 +26,10 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] {
-    background: #ffffff !important;
-    border-right: 1px solid #e4e7f0 !important;
+/*    background: #ffffff !important;
+    border-right: 1px solid #e4e7f0 !important; */
 }
+
 [data-testid="stSidebar"] > div {
     padding-top: 2rem;
 }
@@ -37,7 +39,8 @@ html, body, [class*="css"] {
     font-weight: 800 !important;
     font-size: 1.5rem !important;
     letter-spacing: -0.03em !important;
-    color: #0f1623 !important;
+/*    color: #0f1623 !important; */
+            
     white-space: nowrap !important;
     margin-bottom: 0 !important;
 }
@@ -58,6 +61,7 @@ html, body, [class*="css"] {
     padding: 5px 0 !important;
     transition: color 0.2s !important;
 }
+
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
     color: #2563eb !important;
 }
@@ -67,13 +71,13 @@ hr {
     margin: 1rem 0 !important;
 }
 
-/* Métricas — tamanho harmonioso */
 [data-testid="stMetric"] {
     background: #f0f4ff !important;
     border: 1px solid #dce3f5 !important;
     border-radius: 10px !important;
     padding: 10px !important;
 }
+
 [data-testid="stMetricLabel"] {
     font-family: 'Space Mono', monospace !important;
     font-size: 0.6rem !important;
@@ -81,11 +85,12 @@ hr {
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
 }
+
 [data-testid="stMetricValue"] {
     font-family: 'Syne', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 1.05rem !important;   /* ← reduzido de 1.5rem */
-    color: #0f1623 !important;
+    font-size: 1.05rem !important;
+/*    color: #0f1623 !important;*/
     line-height: 1.3 !important;
 }
 
@@ -117,13 +122,78 @@ iframe {
 </style>
 """, unsafe_allow_html=True)
 
-
 def main():
-    grafo = carregar_grafo_do_json("data/topologia.json")
+    uploaded_file = st.sidebar.file_uploader(
+        "Importar topologia JSON",
+        type=["json"]
+    )
 
+    if uploaded_file is not None:
+        try:
+            dados_json = json.load(uploaded_file)
+            if not os.path.exists("data"):
+                os.makedirs("data")
+            with open("data/temp_topologia.json", "w", encoding="utf-8") as temp_file:
+                json.dump(dados_json, temp_file, indent=4)
+            caminho_final = "data/temp_topologia.json"
+            st.sidebar.success("Topologia importada com sucesso!")
+        except json.JSONDecodeError:
+            st.sidebar.error("Erro: JSON inválido.")
+            st.sidebar.markdown("""
+    ### Como importar corretamente
+
+    O arquivo JSON deve seguir a estrutura abaixo:
+
+    ```json
+    {
+      "nodes": [
+        {
+          "id": "A",
+          "label": "Router"
+        },
+        {
+          "id": "B",
+          "label": "Servidor"
+        }
+      ],
+      "edges": [
+        {
+          "source": "A",
+          "target": "B",
+          "weight": 10
+        }
+      ]
+    }
+    ```
+
+    ### Regras importantes
+    - O JSON deve estar bem formatado
+    - Use aspas duplas `" "` obrigatoriamente
+    - Não use vírgula no último item
+    - Cada nó precisa de:
+      - `id`
+      - `label`
+    - Cada aresta precisa de:
+      - `source`
+      - `target`
+      - `weight`
+
+    ### Erros comuns
+    - Aspas simples `'`
+    - Vírgula extra no final
+    - IDs duplicados
+    - Ligações para nós inexistentes
+    """)
+            st.stop()
+    else:
+        caminho_final = "data/topologia.json"
+        if not os.path.exists(caminho_final):
+            st.sidebar.warning("Arquivo padrão não encontrado. Por favor, faça o upload.")
+            st.stop()
+
+    grafo = carregar_grafo_do_json(caminho_final)
     tarjan = TarjanSPOF(grafo)
     spofs = tarjan.find_spofs()
-
     kruskal = KruskalMST(grafo)
     mst_arestas, custo_mst = kruskal.calcular_mst()
 
@@ -131,33 +201,28 @@ def main():
         st.title("GraphDefend")
         st.markdown("Análise de redes")
         st.divider()
-
         modo = st.radio(
             "Selecione a visualização:",
             ["Grafo original", "MST — Kruskal", "SPOFs — Tarjan"],
             label_visibility="collapsed"
         )
-
         st.divider()
         st.markdown("**LEGENDA**")
         st.markdown("""
-<div style='font-family: Space Mono, monospace; font-size: 0.72rem; line-height: 2.2;'>
-  <span style='color:#2563eb; font-size:1rem;'>⬤</span>&nbsp; <span style='color:#4a5578'>Nó Seguro</span><br>
-  <span style='color:#ef4444; font-size:1rem;'>⬤</span>&nbsp; <span style='color:#4a5578'>SPOF — Risco</span><br>
-  <span style='color:#10b981; font-size:1rem;'>⬤</span>&nbsp; <span style='color:#4a5578'>Rota MST</span>
-</div>
-""", unsafe_allow_html=True)
+        <div style='font-family: Space Mono, monospace; font-size: 0.72rem; line-height: 2.2;'>
+          <span style='color:#2563eb; font-size:1rem;'>⬤</span>&nbsp; <span style='color:var(--text-color)'>Nó Seguro</span><br>
+          <span style='color:#ef4444; font-size:1rem;'>⬤</span>&nbsp; <span style='color:var(--text-color)'>SPOF — Risco</span><br>
+          <span style='color:#10b981; font-size:1rem;'>⬤</span>&nbsp; <span style='color:var(--text-color)'>Rota MST</span>
+        </div>
+        """, unsafe_allow_html=True)
         st.divider()
-
         st.markdown("**ESTATÍSTICAS**")
         col1, col2 = st.columns(2)
         col1.metric("Vértices", len(grafo.get_vertices()))
         col2.metric("Arestas", len(grafo.get_edges()))
-
         col3, col4 = st.columns(2)
         col3.metric("Custo MST", f"{custo_mst}ms")
         col4.metric("SPOFs", len(spofs))
-
         st.divider()
         st.markdown("**MODO ATUAL**")
         if modo == "Grafo original":
@@ -172,7 +237,6 @@ def main():
 
     visualizador = GraphVisualizer(grafo, spofs=spofs_ativos, mst_arestas=mst_ativa)
     visualizador._construir_rede()
-
     caminho_html = "grafo_temp.html"
     visualizador.net.save_graph(caminho_html)
 
@@ -180,7 +244,6 @@ def main():
         html_data = f.read()
 
     components.html(html_data, height=800)
-
 
 if __name__ == "__main__":
     main()

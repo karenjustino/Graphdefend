@@ -13,3 +13,5 @@ grafo_temp.html
 
 .DS_Store
 Thumbs.db
+
+data/temp_topologia.json
